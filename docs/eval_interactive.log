@@ -1,0 +1,61 @@
+==========================================================
+🏫 VINUNI AI COURSE - DAY 03 LAB: CHATBOT VS REACT AGENT
+==========================================================
+🔌 LLM Provider: OpenAIProvider
+🌐 MCP Server: vinuni-academic-mcp-server
+
+✅ Đã tải thành công 5 Test Cases thử nghiệm.
+
+🎮 [INTERACTIVE MODE] Trò chuyện trực tiếp với ReAct Agent:
+💡 Gợi ý câu hỏi thử nghiệm:
+   - Câu hỏi chung: 'Quy chế học vụ VinUni yêu cầu bao nhiêu tín chỉ?'
+   - Tra cứu học vụ: 'Hãy tra cứu thông tin học vụ của sinh viên SV2026001'
+   - Đặt lịch hẹn: 'Đặt lịch hẹn tư vấn cho SV2026001 vào 14:00 ngày 15/09/2026'
+   - Gõ 'exit' hoặc 'quit' để kết thúc phiên trò chuyện.
+
+👤 Sinh viên hỏi: 
+🤖 [REACT AGENT] Câu hỏi: Hãy tra cứu thông tin học vụ của sinh viên SV2026001.
+
+--- 🔄 Vòng lặp ReAct Loop (Step 1/5) ---
+🧠 [Thought]: OpenAI quyết định gọi công cụ 'academic_query' với tham số: {"student_id": "SV2026001"}
+🛠️ [Action Proposed]: academic_query({'student_id': 'SV2026001'})
+👁️ [Observation từ MCP Server]: {"status": "SUCCESS", "student_id": "SV2026001", "data": {"full_name": "Nguyễn Văn An", "class": "AI-K4", "gpa": 3.85, "email": "an.nv@vinuni.edu.vn", "status": "Đang học", "advisor": "PGS.TS Nguyễn Văn A"}}
+
+--- 🔄 Vòng lặp ReAct Loop (Step 2/5) ---
+🧠 [Thought]: OpenAI phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).
+🏁 [Final Answer]: Thông tin học vụ của sinh viên SV2026001 như sau:
+
+- **Họ và tên:** Nguyễn Văn An
+- **Lớp:** AI-K4
+- **Điểm GPA:** 3.85
+- **Email:** an.nv@vinuni.edu.vn
+- **Trạng thái:** Đang học
+- **Cố vấn học tập:** PGS.TS Nguyễn Văn A
+
+Nếu bạn cần thêm thông tin nào khác hay muốn đặt lịch hẹn tư vấn, hãy cho tôi biết!
+📊 [OBSERVABILITY]: Đã lưu 2 sự kiện Waterfall Trace tại '/Users/tridao/Documents/PersonalProjects/VINAITC/Week 1/K4B-Day03-Dao_Gia_Bao-2A202602793/docs/trace_waterfall.json'!
+👤 Sinh viên hỏi: 
+🤖 [REACT AGENT] Câu hỏi: Tôi là sinh viên SV2026002. Hãy đặt lịch tư vấn với TS. Lê Thị B vào 09:00 ngày 16/09/2026.
+
+--- 🔄 Vòng lặp ReAct Loop (Step 1/5) ---
+🧠 [Thought]: OpenAI quyết định gọi công cụ 'academic_query' với tham số: {"student_id": "SV2026002"}
+🛠️ [Action Proposed]: academic_query({'student_id': 'SV2026002'})
+👁️ [Observation từ MCP Server]: {"status": "SUCCESS", "student_id": "SV2026002", "data": {"full_name": "Trần Thị Bình", "class": "AI-K4", "gpa": 3.6, "email": "binh.tt@vinuni.edu.vn", "status": "Đang học", "advisor": "TS. Lê Thị B"}}
+
+--- 🔄 Vòng lặp ReAct Loop (Step 2/5) ---
+🧠 [Thought]: OpenAI quyết định gọi công cụ 'schedule_appointment' với tham số: {"student_id": "SV2026002", "datetime_str": "09:00 16/09/2026", "advisor_name": "TS. Lê Thị B"}
+🛠️ [Action Proposed]: schedule_appointment({'student_id': 'SV2026002', 'datetime_str': '09:00 16/09/2026', 'advisor_name': 'TS. Lê Thị B'})
+👁️ [Observation từ MCP Server]: {"status": "SUCCESS", "booking_id": "BK-SV2026002-99", "student_id": "SV2026002", "datetime": "09:00 16/09/2026", "advisor": "TS. Lê Thị B", "message": "Đặt lịch thành công cho sinh viên SV2026002 với TS. Lê Thị B vào lúc 09:00 16/09/2026."}
+
+--- 🔄 Vòng lặp ReAct Loop (Step 3/5) ---
+🧠 [Thought]: OpenAI phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).
+🏁 [Final Answer]: Bạn đã đặt lịch tư vấn thành công với TS. Lê Thị B vào lúc 09:00 ngày 16/09/2026. Dưới đây là các thông tin chi tiết:
+
+- Mã sinh viên: SV2026002
+- Thời gian hẹn: 09:00 16/09/2026
+- Cố vấn học tập: TS. Lê Thị B
+- Mã đặt lịch: BK-SV2026002-99
+
+Nếu bạn cần thêm thông tin hoặc hỗ trợ khác, hãy cho tôi biết!
+📊 [OBSERVABILITY]: Đã lưu 3 sự kiện Waterfall Trace tại '/Users/tridao/Documents/PersonalProjects/VINAITC/Week 1/K4B-Day03-Dao_Gia_Bao-2A202602793/docs/trace_waterfall.json'!
+👤 Sinh viên hỏi: 👋 Tạm biệt! Kết thúc phiên trò chuyện.

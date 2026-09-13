@@ -1,0 +1,37 @@
+[
+  {
+    "id": "TC01",
+    "type": "direct_query",
+    "question": "Chào bạn, bạn có thể giới thiệu quy chế học vụ cơ bản của Đại học VinUni không?",
+    "expected_behavior": "Chatbot trả lời trực tiếp từ System Prompt, không cần gọi bất kỳ Tool nào.",
+    "complexity": "Low"
+  },
+  {
+    "id": "TC02",
+    "type": "single_tool_query",
+    "question": "Hãy tra cứu thông tin học vụ của sinh viên SV2026001.",
+    "expected_behavior": "Agent nhận diện nhu cầu tra cứu, tự động phát sinh Tool Call 'academic_query' với mã SV2026001.",
+    "complexity": "Medium"
+  },
+  {
+    "id": "TC03",
+    "type": "appointment_booking",
+    "question": "Tôi là sinh viên SV2026001. Hãy đặt lịch tư vấn học vụ với PGS.TS Nguyễn Văn A vào lúc 14:00 ngày 15/09/2026.",
+    "expected_behavior": "Agent gọi schedule_appointment với student_id='SV2026001', datetime_str='14:00 15/09/2026', advisor_name='PGS.TS Nguyễn Văn A'. Chỉ xác nhận đặt lịch thành công sau khi công cụ trả về SUCCESS; phản hồi đúng mã sinh viên, cố vấn, thời gian và mã đặt lịch từ kết quả.",
+    "complexity": "Medium"
+  },
+  {
+    "id": "TC04",
+    "type": "multi_step_reasoning",
+    "question": "Tôi là sinh viên SV2026002 và chưa biết cố vấn học tập của mình là ai. Hãy tra cứu hồ sơ học vụ, cho tôi biết GPA hiện tại, rồi đặt lịch tư vấn với đúng cố vấn của tôi vào lúc 09:00 ngày 16/09/2026.",
+    "expected_behavior": "Agent gọi academic_query với student_id='SV2026002' trước. Khi nhận SUCCESS, lấy GPA=3.60 và advisor='TS. Lê Thị B' từ kết quả, sau đó gọi schedule_appointment với student_id='SV2026002', datetime_str='09:00 16/09/2026', advisor_name='TS. Lê Thị B'. Không đoán cố vấn trước khi tra cứu; chỉ xác nhận lịch khi công cụ trả về SUCCESS và báo GPA cùng thông tin lịch hẹn.",
+    "complexity": "High"
+  },
+  {
+    "id": "TC05",
+    "type": "edge_case_handling",
+    "question": "Hãy tra cứu hồ sơ học vụ, GPA và cố vấn học tập của sinh viên có mã SV9999999.",
+    "expected_behavior": "Agent gọi academic_query với student_id='SV9999999'. Khi công cụ trả về NOT_FOUND, thông báo lịch sự rằng không tìm thấy sinh viên và đề nghị kiểm tra lại mã; không bịa hồ sơ, GPA hay cố vấn, không gọi schedule_appointment.",
+    "complexity": "Medium"
+  }
+]
